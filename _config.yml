@@ -1,7 +1,7 @@
 #
 # Basic settings.
 #
-url: http://localhost:4000 # e.g. http://you.github.io
+url: http://tristanburnside.github.io/ # e.g. http://you.github.io
 baseurl: # e.g. /blog
 title: Tristan Burnside
 description: An iOS developer at Outware Mobile.
@@ -87,7 +87,7 @@ include: ["_pages"]
 markdown: redcarpet
 redcarpet:
   extensions: ["autolink", "hard_wrap", "fenced_code_blocks", "strikethrough", "superscript", "with_toc_data", "tables", "footnotes"]
-highlighter: rouge
+highlighter: pygments
 
 excerpt_separator: <!--more-->
 
