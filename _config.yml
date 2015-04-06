@@ -1,7 +1,7 @@
 #
 # Basic settings.
 #
-url: http://tristanburnside.github.io/ # e.g. http://you.github.io
+url: http://tristanburnside.github.io # e.g. http://you.github.io
 baseurl: # e.g. /blog
 title: Tristan Burnside
 description: An iOS developer at Outware Mobile.
