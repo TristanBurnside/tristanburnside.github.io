@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Sorry Swizzlers!
+title: Sorry Swizzlers
 tags: iOS objc swizzle
 ---
 
