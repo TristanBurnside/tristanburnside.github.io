@@ -16,7 +16,7 @@ Initially I was confused, not because the output didn't make sense, but because 
     "apples" == "oranges" : false
     1===1 : Error //This is expected as Int does not conform to AnyObject which defines the === operator.
     "apples" === "apples" : Error //Neither does String
-{% highlight swift %}
+{% endhighlight %}
 
 So where was I going wrong (or possibly right depending on how you look at it)? Well one of the examples I had seen was the `1===1` returned true, This would mean these must actually be objects and the only way for that to be true is if they are implicitly bridged to NSInteger. This can be done by importing Foundation. So now the last 2 lines from above look like this
 
