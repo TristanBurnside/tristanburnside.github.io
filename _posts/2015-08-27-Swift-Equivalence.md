@@ -20,35 +20,44 @@ Initially I was confused, not because the output didn't make sense, but because 
 
 So where was I going wrong (or possibly right depending on how you look at it)? Well one of the examples I had seen was the `1===1` returned true, This would mean these must actually be objects and the only way for that to be true is if they are implicitly bridged to NSInteger. This can be done by importing Foundation. So now the last 2 lines from above look like this
 
+{% highlight swift %}
     import Foundation
     
     1===1 : true
     "apples" === "apples" : false
+{% endhighlight %}
 
 Ah ha, now there's some inconsistency. Except I know this already, NSInteger is just a long (or int) whereas NSString is a class extending NSObject. So while this will confuse some people it is exactly the same reason why you have isEqualToString: in Objective-C (Java, C# and many others also have special considerations when comparing strings). I really like that in swift you have to go out of your way to make this kind of error.
 
 So, there must be more to it than that right? Well yes, there is. Remember this line:
 
+{% highlight swift %}
     1===1 : true
+{% endhighlight %}
 
 Well look what happens if I declare one of these as a constant beforehand:
 
+{% highlight swift %}
     let one = 1
     1===one : Error
+{% endhighlight %}
 
 Well that is kinda odd, it looks like the type of one is resolved to Int but the type of 1 is being resolved to NSInteger. To make this work you can force the Int to be bridged by casting it to AnyObject.
 
-
+{% highlight swift %}
     1 === one as AnyObject : true
+{% endhighlight %}
 
 This is really quite strange behaviour because the compiler has no issues with the cast because it knows that Int can be bridge to NSInteger but it doesn't do it unless asked to.
 
 We can observe much the same results for strings (except that 2 NSStrings are not necessarily the same instance because they are the same value). 
 
+{% highlight swift %}
     let apple = "apple"
     "apple"===apple as AnyObject : false
     apple === "apple" : Error //This matches what Int did
     apple === apple : Error
+{% endhighlight %}
 
 So Swift literals are automatically bridged to Objective-C Types but variables and constants are not, even if you don't specify an explicit type when defining them. That's how it currently stands as of Swift 2.0 but Swift is still changing quickly and will continue to do so for some time it seems.
 
